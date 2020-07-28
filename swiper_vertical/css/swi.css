@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+.swiper-container{
+	position:relative;
+	width: 100%;
+}
+
+.swiper-slide{
+	position:relative;
+	text-align: center;
+	font-size: 18px;
+	
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.sbox{
+	display: inline-block;
+	box-sizing:border-box;
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+
+.sbox img{	
+	float:left;
+	width:100%;
+	
+	-ms-transform: scale(1,1); /* IE 9 */
+    -webkit-transform: scale(1,1); /* Safari */
+    transform: scale(1,1); /* Standard syntax */
+	
+	transition: transform 1s ease-in-out;
+	-webkit-transition: transform 1s ease-in-out;
+}
+
+.sbox:hover img{
+	cursor: pointer;		
+	-ms-transform: scale(1.1,1.1); /* IE 9 */
+    -webkit-transform: scale(1.1,1.1); /* Safari */
+    transform: scale(1.1,1.1); /* Standard syntax */
+}
+
+.imgt{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	color:rgba(255,255,255,1);
+}
+
+
+@media only screen and (min-width: 768px) {
+
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+}
