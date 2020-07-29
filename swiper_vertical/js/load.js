@@ -25,7 +25,7 @@ $(document).ready(function(){
 	
 	$(".blackbt").click(function(){	
 		var _index = $(this).index();
-		//$(this).addClass("ch_bg").siblings().removeClass("ch_bg");
+		$(this).addClass("ch_bg").siblings().removeClass("ch_bg");
 		$(".yearblock").eq(_index).fadeIn(2000).siblings().fadeOut(2000);	
 	});	
 	
@@ -42,19 +42,18 @@ $(document).ready(function(){
 	});	
 	
 	
-	imgswp();
 	bannerresize();
 	mvresize();
+	imgswp();
 	
 	$(window).resize(function(){
+	
+		bannerresize();
+		mvresize();
+		$(".overlay").hide();	
 		
-	imgswp();
-	bannerresize();
-	mvresize();
-	
-	$(".overlay").hide();
-	
-	
+		imgswp();
+		
 	});
 	
 });
@@ -72,9 +71,9 @@ function mvresize(){
 	$("#main_v").height(mh);
 };
 
-function imgswp(o){
+function imgswp(){
 	var iw = $(window).width();
-	var oimg = iw*0.9*0.5;
+	var oimg = (iw > 1200)?iw*0.9*0.5:iw;
 	var imgw = oimg*0.9;
 	var bw = imgw*0.12;
 	var conw = imgw*0.8;

@@ -281,7 +281,7 @@ article a:hover{
 .bbox{
 	width:auto;
 	height:auto;
-	margin:0px 10px 10px;
+	/* margin:0px 10px 10px; */
 	background: rgba(180, 180, 180, .2);
 	opacity:1;
 }
@@ -448,7 +448,9 @@ header img{
 	opacity: 1;
 }
 
-
+.bbox{
+	margin:0px 10px 10px;
+}
 
 }
 

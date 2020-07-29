@@ -196,25 +196,16 @@
 <script>
     
     var galleryThumbs = new Swiper('.gallery-thumbs', {
-        spaceBetween: 3,
+        spaceBetween: 7,
         slidesPerView: 6,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
         breakpoints: {
             768: {
-                spaceBetween: 10,
                 direction: 'vertical',
-                slidesPerView: 10,
-                mousewheel: {
-                    invert: false,
-                    releaseOnEdges: true
-                },
+                slidesPerView: 10
             }
-        },
-        mousewheel: {
-            invert: false,
-            releaseOnEdges: false,
-        },
+        }
     });
 
     var galleryTop = new Swiper('.gallery-top', {
