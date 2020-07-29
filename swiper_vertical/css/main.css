@@ -286,12 +286,14 @@ article a:hover{
 	opacity:1;
 }
 
+/* 
 .bcon{
 	position:absolute;
 	left:0;
 	top:0;
 	display:none;
 }
+*/
 
 .bcon img, .bbox img{
 	float:left;

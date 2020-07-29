@@ -68,7 +68,7 @@ function bannerresize(){
 
 function mvresize(){
 	var mw = $("#main_v").width();
-	var mh = $mw/1920*1100;
+	var mh = mw/1920*1100;
 	$("#main_v").height(mh);
 };
 
