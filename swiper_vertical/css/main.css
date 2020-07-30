@@ -50,13 +50,6 @@ section{
 	margin:auto;
 }
 
-#lan{
-	float: right;
-	position:relative;
-	top:40px;
-	text-align:right;
-	display:none;
-}
 
 /*mv*/
 main{
@@ -455,9 +448,6 @@ header img{
 }
 
 @media only screen and (min-width: 1200px) {
-#lan{
-	display: inline-block;
-}
 
 #burbt{
 	display:none;	
