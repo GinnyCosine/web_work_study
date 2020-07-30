@@ -20,11 +20,15 @@ $(document).ready(function(){
 		var _index = $(this).index();
 		$("#mobile_menu .layer1 ul").eq(_index).slideToggle();
 		$(this).siblings().children(".layer2").slideUp();
-		$(".search_input").slideUp();
+		$("#mb_lan .search_input").animate({height:'hide',opacity:'hide'},230);
 	});
 	
-	$("body").on('click','#search',function(){
-		$(".search_input").slideToggle();
+	$("body").on('click','#lan #search',function(){
+		$("#lan .search_input").animate({width:'toggle',opacity:'toggle'},400);
+	});
+
+	$("body").on('click','#mb_lan #search',function(){
+		$("#mb_lan .search_input").animate({height:'toggle',opacity:'toggle'},230);
 	});
 	
 	$("#cover").click(function(){
