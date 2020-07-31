@@ -37,7 +37,7 @@ $(document).ready(function(){
 		closeMobileMenu();
 	});
 
-	$('#mobile_menu .cross span').click(function(){
+	$('#mobile_menu .cross').click(function(){
 		closeMobileMenu();
 	});
 
