@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 	/* mobile menu */
 	$("#menubtn").click(function(event){
-		$("#mobile_menu").animate({width:'toggle',opacity:'toggle'},400);
+		$("#mobile_menu").animate({width:'show',opacity:'show'},400);
 		$("#cover").fadeIn(370);
 		$("body").addClass("no-scroll");
 	});
@@ -32,15 +32,11 @@ $(document).ready(function(){
 	});
 	
 	$("#cover").click(function(){
-		$("#mobile_menu").animate({width:'toggle',opacity:'toggle'},400);
-		$("#cover").fadeOut(370);
-		$("body").removeClass("no-scroll");
+		closeMobileMenu();
 	});
 
 	$('#mobile_menu h4 span').click(function(){
-		$("#mobile_menu").animate({width:'toggle',opacity:'toggle'},400);
-		$("#cover").fadeOut(370);
-		$("body").removeClass("no-scroll");
+		closeMobileMenu();
 	});
 
 	$(".blackbt").click(function(){	
@@ -73,8 +69,7 @@ $(document).ready(function(){
 		$(".overlay").hide();	
 		
 		imgswp();
-		if ($(window).width()>1200)
-			$("#mobile_menu").fadeTggle(400);
+		closeMobileMenu();
 	});
 	
 });
@@ -115,3 +110,10 @@ function imgswp(){
 	$(".bbox img").width(bw);
 	$(".bbox img").height(bw);
 };
+
+function closeMobileMenu(){
+	$("#mobile_menu").animate({width:'hide',opacity:'hide'},400);
+	$("#mobile_menu .layer1 ul").slideUp();
+	$("#cover").fadeOut(370);
+	$("body").removeClass("no-scroll");
+}
