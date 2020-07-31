@@ -222,7 +222,8 @@
 #mobile_menu .cross .line{
 	position: absolute;
 	width: 100%;
-	height: 2px;
+	height: 4px;
+	border-radius: 2px;
 	top: 50%;
 	background: rgba(90,90,90,1);
 	-ms-transform: translate(0, -50%);
