@@ -13,7 +13,7 @@ $(document).ready(function(){
 	$(".multilanguage").load("multilanguage.html");
 	
 	/* mobile menu */
-	$("#menubtn").click(function(event){
+	$("#menubtn").click(function(){
 		$("#mobile_menu").animate({width:'show',opacity:'show'},400);
 		$("#cover").fadeIn(370);
 		$("body").addClass("no-scroll");
@@ -83,29 +83,25 @@ function initializeJSON(){
 	$.ajaxSettings.async = false; 
     $.getJSON('js/package.json', function(data){
 		$('#header').empty();
-		let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>/';
-		header += '<a href="' + data.category_En + '.html">'+ data.category_Zh + '</a>∕';
-		header +='<a href="'+ data.html + '">' + data.character + '</a></h1>';
+		let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
+		header += '<a href="' + data.category.en + '.html">'+ data.category.zh + '</a>∕';
+		header +='<a href="'+ data.id + '.html">' + data.character + '</a></h1>';
 		$('#header').append(header);
-		console.log(header);
 
 		$('#intro').empty();
 		let intro = '<h1>' + data.character + '</h1>';
 		intro += '<p>' + data.intro + '</p>';
 		$('#intro').append(intro);
-		console.log(intro);
 
 		let bg_img = '';
 		let sm_img = '';
 		$('.swiper-wrapper').empty();
-        $.each(data.images, function(index, pic){
-			bg_img += '<div class="bcon swiper-slide"><img src="images/' + data.category_En + '/' + pic.image + '"></div>';
-			sm_img += '<div class="bbox swiper-slide"><img src="images/' + data.category_En + '/' + pic.image + '"></div>';
-		});
+		for (i = 1; i <= data.image; i++) {
+			bg_img += '<div class="bcon swiper-slide"><img src="images/' + data.category.en + '/' + data.id + '_0' + i + '.jpg"></div>';
+			sm_img += '<div class="bbox swiper-slide"><img src="images/' + data.category.en + '/' + data.id + '_0' + i + '.jpg"></div>';
+		}
 		$('.swiper-wrapper').eq(0).append(bg_img);
 		$('.swiper-wrapper').eq(1).append(sm_img);
-		console.log(bg_img);
-		console.log(sm_img);
 	});
 }
 
