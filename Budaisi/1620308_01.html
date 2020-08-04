@@ -56,10 +56,7 @@
 
 <!--title-->
 <!-- 旦/梅蘭芳 -->
-<article id="headar">
-	<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕<a href="dan.html">旦</a>∕<a href="1620308_01.html">梅蘭芳旦</a></h1>
-</article>
-
+<article id="headar"></article>
 
 <!--project-->
 <!-- 要串起來 -->
@@ -67,38 +64,17 @@
 <div class="row">  
         <div class="col-m-12 col-1">&nbsp;</div>
         <div class="col-4">
-        	<div class="databox">
-                <h1>梅蘭芳旦</h1>
-                <p>仿京劇梅蘭芳造型的少女。梅芳旦和齊眉旦所扮演的角色相近，卻因中國京劇中梅蘭芳這個角色讓許多人為之癡迷，所以布袋戲就模仿雕製了梅芳旦這個角色。仿京劇梅蘭芳造型的少女。梅芳旦和齊眉旦所扮演的角色相近，卻因中國京劇中梅蘭芳這個角色讓許多人為之癡迷，所以布袋戲就模仿雕製了梅芳旦這個角色。仿京劇梅蘭芳造型的少女。梅芳旦和齊眉旦所扮演的角色相近，卻因中國京劇中梅蘭芳這個角色讓許多人為之癡迷，所以布袋戲就模仿雕製了梅芳旦這個角色。</p>
-            </div>
+        	<div class="databox" id="intro"></div>
         </div>
         
         <div class="col-6">
             <div class="imgswip">
             	<div class="imgswbox">
                     <div class="swiper-container gallery-top bg_img">
-                        <div class="swiper-wrapper">
-                            <div class="bcon swiper-slide"><img src="images/dan/1620308_01.jpg"></div>
-                            <div class="bcon swiper-slide"><img src="images/dan/1620308_02.jpg"></div>
-                            <div class="bcon swiper-slide"><img src="images/dan/1620308_03.jpg"></div>
-                            <div class="bcon swiper-slide"><img src="images/dan/1620308_04.jpg"></div>
-                            <div class="bcon swiper-slide"><img src="images/dan/1620308_05.jpg"></div>
-                            <div class="bcon swiper-slide"><img src="images/dan/1620308_06.jpg"></div>
-                            <div class="bcon swiper-slide"><img src="images/dan/1620308_07.jpg"></div>
-                            <div class="bcon swiper-slide"><img src="images/dan/1620308_08.jpg"></div>
-                        </div>
+                        <div class="swiper-wrapper"></div>
                     </div>
                     <div class="swiper-container gallery-thumbs sm_img">
-                        <div class="swiper-wrapper">
-                            <div class="bbox swiper-slide"><img src="images/dan/1620308_01.jpg"></div>
-                            <div class="bbox swiper-slide"><img src="images/dan/1620308_02.jpg"></div>
-                            <div class="bbox swiper-slide"><img src="images/dan/1620308_03.jpg"></div>
-                            <div class="bbox swiper-slide"><img src="images/dan/1620308_04.jpg"></div>
-                            <div class="bbox swiper-slide"><img src="images/dan/1620308_05.jpg"></div>
-                            <div class="bbox swiper-slide"><img src="images/dan/1620308_06.jpg"></div>
-                            <div class="bbox swiper-slide"><img src="images/dan/1620308_07.jpg"></div>
-                            <div class="bbox swiper-slide"><img src="images/dan/1620308_08.jpg"></div>
-                        </div>
+                        <div class="swiper-wrapper"></div>
                     </div>	
                 </div>
             </div>
@@ -216,42 +192,6 @@
 
 <!--footer-->
 <footer></footer>
-
-<!-- Initialize Swiper -->
-<script>
-    
-    var galleryThumbs = new Swiper('.gallery-thumbs', {
-        spaceBetween: 7,
-        slidesPerView: 6,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        breakpoints: {
-            768: {
-                direction: 'vertical',
-                slidesPerView: 10
-            }
-        }
-    });
-
-    var galleryTop = new Swiper('.gallery-top', {
-        spaceBetween: 10,
-        speed: 300,
-        effect: 'fade',
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        thumbs: {
-            swiper: galleryThumbs
-        }
-    });
-
-   
-</script>
 
 </body>
 </html>

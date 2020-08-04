@@ -2,13 +2,16 @@
 
 $(document).ready(function(){
 	
+	/* initialize */
+	initializeJSON();
+	swiper();
 	$("#pc_menu nav").load("nav.html");
 	$("#lan").load("lan.html");
 	$("#mb_lan").load("lan.html");
 	$("footer").load("footer.html");
 	$("#mobile_menu nav").load("mobile_nav.html");
 	$(".multilanguage").load("multilanguage.html");
-
+	
 	/* mobile menu */
 	$("#menubtn").click(function(event){
 		$("#mobile_menu").animate({width:'show',opacity:'show'},400);
@@ -75,6 +78,69 @@ $(document).ready(function(){
 	});
 	
 });
+
+function initializeJSON(){
+	$.ajaxSettings.async = false; 
+    $.getJSON('js/package.json', function(data){
+		$('#header').empty();
+		let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>/';
+		header += '<a href="' + data.category_En + '.html">'+ data.category_Zh + '</a>∕';
+		header +='<a href="'+ data.html + '">' + data.character + '</a></h1>';
+		$('#header').append(header);
+		console.log(header);
+
+		$('#intro').empty();
+		let intro = '<h1>' + data.character + '</h1>';
+		intro += '<p>' + data.intro + '</p>';
+		$('#intro').append(intro);
+		console.log(intro);
+
+		let bg_img = '';
+		let sm_img = '';
+		$('.swiper-wrapper').empty();
+        $.each(data.images, function(index, pic){
+			bg_img += '<div class="bcon swiper-slide"><img src="images/' + data.category_En + '/' + pic.image + '"></div>';
+			sm_img += '<div class="bbox swiper-slide"><img src="images/' + data.category_En + '/' + pic.image + '"></div>';
+		});
+		$('.swiper-wrapper').eq(0).append(bg_img);
+		$('.swiper-wrapper').eq(1).append(sm_img);
+		console.log(bg_img);
+		console.log(sm_img);
+	});
+}
+
+
+function swiper(){
+    galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 7,
+        slidesPerView: 6,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+        breakpoints: {
+            768: {
+                direction: 'vertical',
+                slidesPerView: 10
+            }
+        }
+    });
+
+    galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 10,
+        speed: 300,
+        effect: 'fade',
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+            swiper: galleryThumbs
+        }
+    });
+}
 
 function bannerresize(){
 	var fw = $(window).width();
