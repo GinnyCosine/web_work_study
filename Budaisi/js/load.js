@@ -2,6 +2,10 @@
 
 $(document).ready(function(){
 	
+	let localURL = new URL(location.href);
+	let params = githubURL.searchParams;
+	params.get('q');
+
 	/* initialize */
 	initializeJSON();
 	swiper();
