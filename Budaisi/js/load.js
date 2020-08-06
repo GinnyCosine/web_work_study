@@ -86,7 +86,7 @@ $(document).ready(function(){
 
 function initializeJSON(id_, class_){
 	$.ajaxSettings.async = false; 
-    $.getJSON('js/'+ class_ +'.json', function(data){
+    $.getJSON('js/json/'+ class_ +'.json', function(data){
 		let character_;
 		data.characters.forEach(character => {
 			if (character.id == id_) {
