@@ -3,7 +3,12 @@
 $(document).ready(function(){
 	
 	/* initialize */
-	initializeJSON();
+	let url = new URL(location.href);
+	let params = url.searchParams;
+	let id_ = params.get('id');
+	let class_ = params.get('class');
+
+	initializeJSON(id_, class_);
 	swiper();
 	$("#pc_menu nav").load("nav.html");
 	$("#lan").load("lan.html");
@@ -79,26 +84,33 @@ $(document).ready(function(){
 	
 });
 
-function initializeJSON(){
+function initializeJSON(id_, class_){
 	$.ajaxSettings.async = false; 
-    $.getJSON('js/package.json', function(data){
+    $.getJSON('js/'+ class_ +'.json', function(data){
+		let character_;
+		data.characters.forEach(character => {
+			if (character.id == id_) {
+				character_ = character;
+			}
+		});
+
 		$('#header').empty();
 		let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
 		header += '<a href="' + data.category.en + '.html">'+ data.category.zh + '</a>∕';
-		header +='<a href="'+ data.id + '.html">' + data.character + '</a></h1>';
+		header +='<a href="character.html?id='+ id_ + '&class=' + class_ + '">' + character_.name + '</a></h1>';
 		$('#header').append(header);
 
 		$('#intro').empty();
-		let intro = '<h1>' + data.character + '</h1>';
-		intro += '<p>' + data.intro + '</p>';
+		let intro = '<h1>' + character_.name + '</h1>';
+		intro += '<p>' + character_.intro + '</p>';
 		$('#intro').append(intro);
 
 		let bg_img = '';
 		let sm_img = '';
 		$('.swiper-wrapper').empty();
-		for (i = 1; i <= data.image; i++) {
-			bg_img += '<div class="bcon swiper-slide"><img src="images/' + data.category.en + '/' + data.id + '_0' + i + '.jpg"></div>';
-			sm_img += '<div class="bbox swiper-slide"><img src="images/' + data.category.en + '/' + data.id + '_0' + i + '.jpg"></div>';
+		for (i = 1; i <= character_.image; i++) {
+			bg_img += '<div class="bcon swiper-slide"><img src="images/' + data.category.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
+			sm_img += '<div class="bbox swiper-slide"><img src="images/' + data.category.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
 		}
 		$('.swiper-wrapper').eq(0).append(bg_img);
 		$('.swiper-wrapper').eq(1).append(sm_img);
