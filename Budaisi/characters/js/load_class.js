@@ -98,7 +98,7 @@ function initializeJSON(class_){
 
 		$('#header').empty();
 		let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
-		header += '<a href="' + data.class.en + '.html">'+ data.class.zh + '</a></h1>';
+		header += '<a href="class.html?class=' + data.class.en + '">'+ data.class.zh + '</a></h1>';
 		$('#header').append(header);
 	});
 }
