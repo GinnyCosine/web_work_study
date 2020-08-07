@@ -96,7 +96,7 @@ function initializeJSON(id_, class_){
 
 		$('#header').empty();
 		let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
-		header += '<a href="' + data.category.en + '.html">'+ data.category.zh + '</a>∕';
+		header += '<a href="' + data.class.en + '.html">'+ data.class.zh + '</a>∕';
 		header +='<a href="character.html?id='+ id_ + '&class=' + class_ + '">' + character_.name + '</a></h1>';
 		$('#header').append(header);
 
@@ -109,8 +109,8 @@ function initializeJSON(id_, class_){
 		let sm_img = '';
 		$('.swiper-wrapper').empty();
 		for (i = 1; i <= character_.image; i++) {
-			bg_img += '<div class="bcon swiper-slide"><img src="images/' + data.category.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
-			sm_img += '<div class="bbox swiper-slide"><img src="images/' + data.category.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
+			bg_img += '<div class="bcon swiper-slide"><img src="images/' + data.class.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
+			sm_img += '<div class="bbox swiper-slide"><img src="images/' + data.class.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
 		}
 		$('.swiper-wrapper').eq(0).append(bg_img);
 		$('.swiper-wrapper').eq(1).append(sm_img);
