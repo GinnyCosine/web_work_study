@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Budaisi</title>
+<!--css-->
+<link href="css/swiper.css" rel="stylesheet" type="text/css">
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<!--font-->
+<link href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans&family=Noto+Sans+TC:wght@100;300&display=swap" rel="stylesheet">
+<!--js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://kit.fontawesome.com/a08ea32dcc.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/load.js"></script>
+<!-- BookReader -->
+<script src="BookReader/jquery-ui-1.12.0.min.js"></script>
+<script src="BookReader/jquery.browser.min.js"></script>
+<script src="BookReader/dragscrollable-br.js"></script>
+<script src="BookReader/jquery.colorbox-min.js"></script>
+<link rel="stylesheet" href="BookReader/BookReader.css"/>
+<script src="BookReader/BookReader.js"></script>
+
+</head>
+<body>
+<!--menu-->
+<header>
+    <section>
+        <div class="row">
+            <div id="menubtn">
+                <div class="menubtn_line"></div>
+                <div class="menubtn_line"></div>
+                <div class="menubtn_line"></div>
+                <div class="bg"></div>
+            </div>
+            <div class="col-m-3 col-2"><a href="index.html"><img src="images/logo.png"></a></div>
+            <div class="col-m-6 col-8"></div>
+            <div class="col-m-3 col-2" id="lan"></div>
+        </div>
+        <div class="row">
+            <div class="col-12" id="pc_menu"><nav></nav></div>
+        </div>
+    </section>
+</header>
+
+<!-- mobile menu -->
+<div id="cover"></div>
+<div class="col-12" id="mobile_menu">
+    <section>
+        <div class="cross">
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>  
+    </section>
+    <div id="mb_lan"></div>
+    <section>
+        <nav></nav>
+    </section>
+</div>
+
+<div id="BookReader"></div>
+
+<!--footer-->
+<footer></footer>
+<script>
+    function instantiateBookReader(selector, extraOptions) {
+  selector = selector || '#BookReader';
+  extraOptions = extraOptions || {};
+  var options = {
+    data: [
+      [
+        { width: 800, height: 1200,
+          uri: './images/1620308_01.jpg' },
+      ],
+      [
+        { width: 800, height: 1200,
+          uri: './images/1620308_02.jpg' },
+        { width: 800, height: 1200,
+          uri: './images/1620308_03.jpg' },
+      ],
+      [
+        { width: 800, height: 1200,
+          uri: './images/1620308_04.jpg' },
+        { width: 800, height: 1200,
+          uri: './images/1620308_05.jpg' },
+      ]
+    ],
+
+    // Book title and the URL used for the book title link
+    bookTitle: '111',
+    bookUrl: '/BookReaderDemo/index.html',
+    bookUrlText: '111',
+    bookUrlTitle: 'This is the book URL title',
+
+    // thumbnail is optional, but it is used in the info dialog
+    thumbnail: '//archive.org/download/BookReader/img/page014.jpg',
+    // Metadata is optional, but it is used in the info dialog
+    metadata: [
+      {label: 'Title', value: 'Open Library BookReader Presentation'},
+      {label: 'Author', value: 'Internet Archive'},
+      {label: 'Demo Info', value: 'This demo shows how one could use BookReader with their own content.'},
+    ],
+
+    // Override the path used to find UI images
+    imagesBaseURL: './BookReader/images/',
+
+    ui: 'full', // embed, full (responsive)
+
+    el: selector,
+  };
+  $.extend(options, extraOptions);
+  var br = new BookReader(options);
+  br.init();
+}
+instantiateBookReader('#BookReader');
+
+</script>
+<style>
+    /*
+ * Custom overrides for BookReader Demo.
+ */
+/* Hide print and embed functionality */
+.BRtoolbar .embed, .print {
+    display: none;
+}
+
+.BookReader {
+    width:800px;
+    height: 600px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+@media only screen and (max-width: 799px) {
+    body.BRbodyMobileNavEnabled {
+        margin: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+    .BRbodyMobileNavEnabled .BookReader {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        height: 100%;
+        margin: 0;
+        width: 100%;
+    }
+  }
+
+</style>
+</body>
+</html>
