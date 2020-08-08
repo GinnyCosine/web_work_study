@@ -11,9 +11,9 @@ for class_ in classes.keys():
                 'name': row[0].strip(),
                 'intro': row[1].strip(),
                 'id': row[2].strip(),
-                'image': 8#,
-                # 'size': row[3].strip(),
-                # 'material': row[4].strip()
+                'image': 8,
+                'size': '', # row[3].strip(),
+                'material': '' # row[4].strip()
             })
     data = {
         'class':{
@@ -24,4 +24,3 @@ for class_ in classes.keys():
     }
     with open(class_+".json","w") as jsonfile:
         json.dump(data,jsonfile, ensure_ascii=False)
-
