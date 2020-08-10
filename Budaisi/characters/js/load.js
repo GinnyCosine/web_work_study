@@ -85,38 +85,65 @@ $(document).ready(function(){
 });
 
 function initializeJSON(id_, class_){
-	$.ajaxSettings.async = false; 
-    $.getJSON('js/json/'+ class_ +'.json', function(data){
-		let character_;
-		data.characters.forEach(character => {
-			if (character.id == id_) {
-				character_ = character;
-			}
-		});
-
-		$('#header').empty();
-		let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
-		header += '<a href="' + data.class.en + '.html">'+ data.class.zh + '</a>∕';
-		header +='<a href="character.html?id='+ id_ + '&class=' + class_ + '">' + character_.name + '</a></h1>';
-		$('#header').append(header);
-
-		$('#intro').empty();
-		let intro = '<h1>' + character_.name + '</h1>';
-		intro += '<p>' + character_.intro + '</p>';
-		$('#intro').append(intro);
-
-		let bg_img = '';
-		let sm_img = '';
-		$('.swiper-wrapper').empty();
-		for (i = 1; i <= character_.image; i++) {
-			bg_img += '<div class="bcon swiper-slide"><img src="images/' + data.class.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
-			sm_img += '<div class="bbox swiper-slide"><img src="images/' + data.class.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
+	$.ajaxSettings.async = false;
+	class_list = ['shen', 'dan', 'jing', 'chou', 'tsa'];
+	let morelist_cl = '';
+	class_list.forEach(element => {
+		if (class_ == element) {
+			$.getJSON('js/json/'+ class_ +'.json', function(data){
+				$('#morede h2').empty();
+				$('#morede h2').append('更多' + data.class.zh + '角');
+		
+				let character_;
+				let cnt = 0;
+				let morelist_ch = '';
+				data.characters.forEach(character => {
+					if (character.id == id_) {
+						character_ = character;
+					}
+					else if (cnt < 6){
+						morelist_ch += '<div class="col-2"><div class="shbox">';
+						morelist_ch += '<div class="imgbox"><img src="images/'+ class_ + '/'+ character.id +'_01.jpg"></div>';
+						morelist_ch += '<div class="shmorebt"><h4>More</h4></div></div></div>';
+						cnt++;
+					}
+				});
+				$('#moredecon .imglist').empty();
+				$('#moredecon .imglist').append(morelist_ch);
+		
+				$('#header').empty();
+				let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
+				header += '<a href="' + data.class.en + '.html">'+ data.class.zh + '</a>∕';
+				header +='<a href="character.html?id='+ id_ + '&class=' + class_ + '">' + character_.name + '</a></h1>';
+				$('#header').append(header);
+		
+				$('#intro').empty();
+				let intro = '<h1>' + character_.name + '</h1>';
+				intro += '<p>' + character_.intro + '</p>';
+				$('#intro').append(intro);
+		
+				let bg_img = '';
+				let sm_img = '';
+				$('.swiper-wrapper').empty();
+				for (i = 1; i <= character_.image; i++) {
+					bg_img += '<div class="bcon swiper-slide"><img src="images/' + data.class.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
+					sm_img += '<div class="bbox swiper-slide"><img src="images/' + data.class.en + '/' + character_.id + '_0' + i + '.jpg"></div>';
+				}
+				$('.swiper-wrapper').eq(0).append(bg_img);
+				$('.swiper-wrapper').eq(1).append(sm_img);
+			});
 		}
-		$('.swiper-wrapper').eq(0).append(bg_img);
-		$('.swiper-wrapper').eq(1).append(sm_img);
+		else {
+			$.getJSON('js/json/'+ element +'.json', function(data){
+				morelist_cl += '<div class="col-2"><div class="shbox">';
+				morelist_cl += '<div class="imgbox"><img src="images/'+ element + '/'+ data.characters[0].id +'_01.jpg"></div>'
+				morelist_cl += '<div class="shmorebt"><h4>More</h4></div></div></div>';
+				$('#morechcon .imglist').empty();
+				$('#morechcon .imglist').append(morelist_cl);
+			});
+		}
 	});
 }
-
 
 function swiper(){
     galleryThumbs = new Swiper('.gallery-thumbs', {
