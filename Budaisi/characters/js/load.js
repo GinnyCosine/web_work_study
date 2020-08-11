@@ -7,8 +7,12 @@ $(document).ready(function(){
 	let params = url.searchParams;
 	let id_ = params.get('id');
 	let class_ = params.get('class');
-
-	initializeJSON(id_, class_);
+	if (url.pathname.includes('character.html')) {
+		initializeCharacterJSON(id_, class_);
+	}
+	else if (url.pathname.includes('class.html')) {
+		initializeClassJSON(class_);
+	}
 	swiper();
 	$("#pc_menu nav").load("nav.html");
 	$("#lan").load("lan.html");
@@ -29,7 +33,7 @@ $(document).ready(function(){
 		$("#mobile_menu .layer1 ul").eq(_index).slideToggle();
 		$(this).siblings().children(".layer2").slideUp();
 		$("#mobile_menu .layer1 .add .add_line:nth-child(2)").eq(_index).animate({height:'toggle'});
-		$(this).siblings().children("a").children(".add").children(".add_line:nth-child(2)").animate({height:'show'});
+		$(this).siblings().children("a").children(".title").children(".add").children(".add_line:nth-child(2)").animate({height:'show'});
 		// $("#mb_lan .search_input").animate({height:'hide',opacity:'hide'},230);
 	});
 	
@@ -84,7 +88,7 @@ $(document).ready(function(){
 	
 });
 
-function initializeJSON(id_, class_){
+function initializeCharacterJSON(id_, class_){
 	$.ajaxSettings.async = false;
 	class_list = ['shen', 'dan', 'jing', 'chou', 'tsa'];
 	let morelist_cl = '';
@@ -113,7 +117,7 @@ function initializeJSON(id_, class_){
 		
 				$('#header').empty();
 				let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
-				header += '<a href="' + data.class.en + '.html">'+ data.class.zh + '</a>∕';
+				header += '<a href="class.html?class=' + data.class.en + '">'+ data.class.zh + '</a>∕';
 				header +='<a href="character.html?id='+ id_ + '&class=' + class_ + '">' + character_.name + '</a></h1>';
 				$('#header').append(header);
 		
@@ -142,6 +146,26 @@ function initializeJSON(id_, class_){
 				$('#morechcon .imglist').append(morelist_cl);
 			});
 		}
+	});
+}
+
+function initializeClassJSON(class_){
+	$.ajaxSettings.async = false; 
+    $.getJSON('js/json/'+ class_ +'.json', function(data){
+		let ch = '';
+		data.characters.forEach(character => {
+			ch += '<a href="character.html?class=' + class_ + '&id=' + character.id + '">';
+			ch += '<div class="col-m-6 col-3"><div class="shbox"><div class="imgbox">';
+			ch += '<img src="images/' + class_ + '/' + character.id + '_01.jpg"></div><div class="sh_tx">';
+			ch += '<h3>' + character.name + '</h3><p></p></div><div class="shmorebt"><h4>More</h4></div></div></div></a>'
+		});
+		$('#list').empty();
+		$('#list').append(ch);
+
+		$('#header').empty();
+		let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
+		header += '<a href="class.html?class=' + data.class.en + '">'+ data.class.zh + '</a></h1>';
+		$('#header').append(header);
 	});
 }
 
