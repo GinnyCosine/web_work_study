@@ -283,7 +283,7 @@ function imgswp(){
 		var w = img.width; 
 		var conh = conw/w*h;
 		$(".imgswbox").width(imgw);
-		$(".imgswbox").height(conh);
+		$(".imgswbox").height(conw/560*800);
 		
 		$(".bg_img").width(conw);
 		$(".bg_img").height(conh);
