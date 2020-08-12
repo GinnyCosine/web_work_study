@@ -276,22 +276,27 @@ function imgswp(){
 	var imgw = oimg*0.9;
 	var bw = imgw*0.12;
 	var conw = imgw*0.8;
-	var conh = conw/560*800;
-	
-	$(".imgswbox").width(imgw);
-	$(".imgswbox").height(conh);
-	
-	$(".bg_img").width(conw);
-	$(".bg_img").height(conh);
-	
-	$(".bg_img img").width(conw);
-	$(".bg_img img").height(conh);
-	
-	$(".bbox").width(bw);
-	$(".bbox").height(bw);
-	
-	$(".bbox img").width(bw);
-	$(".bbox img").height(bw);
+	var img = new Image();
+	img.src = $(".bg_img img").attr("src");
+	img.onload = function(){
+		var h = img.height;
+		var w = img.width; 
+		var conh = conw/w*h;
+		$(".imgswbox").width(imgw);
+		$(".imgswbox").height(conh);
+		
+		$(".bg_img").width(conw);
+		$(".bg_img").height(conh);
+		
+		$(".bg_img img").width(conw);
+		$(".bg_img img").height(conh);
+		
+		$(".bbox").width(bw);
+		$(".bbox").height(bw);
+		
+		$(".bbox img").width(bw);
+		$(".bbox img").height(bw);
+	}
 };
 
 function closeMobileMenu(){
