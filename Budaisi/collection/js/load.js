@@ -83,138 +83,145 @@ function initialize(){
 	let params = url.searchParams;
 	let id_ = params.get('id');
 	let class_ = params.get('class');
-	let list_ = params.get('list');
+	let type_ = params.get('type');
 	$("title").empty();
-	if (url.pathname.includes('character.html')) {
-		initializeIntroJSON(id_, class_, list_);
+	if (url.pathname.includes('intro.html')) {
+		initializeIntro(id_, class_, type_);
 	}
 	else if (url.pathname.includes('class.html')) {
-		initializeClassJSON(class_, list_);
+		initializeClass(class_, type_);
 	}
-	else if (url.pathname.includes('list.html')) {
-		initializeListJSON(list_);
-	}
-}
-
-function initializeListJSON(list_){
-	
-	// <a href="dan.html">
-    //     <div class="col-m-6 col-4">
-    //         <div class="shbox">
-    //    	    	<div class="imgbox">
-    //             	<img src="images/dan/1620308_01.jpg">
-    //             </div>
-    //             <div class="sh_tx">
-    //                 <h3>旦</h3>
-    //                 <p></p>
-    //             </div>
-    //             <div class="shmorebt"><h4>More</h4></div>
-    //         </div>
-    //     </div>
-    // </a>
-
-}
-
-function initializeIntroJSON(id_, class_, list_){
-	let par = {
-		id: id_,
-		class: class_
-	}
-	if (list_ == 'characters') {
-		charactersIntro(par);
-	}
-	else if (list_ == 'costumes') {
-		costumesIntro(par);
+	else if (url.pathname.includes('overview.html')) {
+		initializeOverview(type_);
 	}
 }
 
-function initializeClassJSON(class_, list_){
+function initializeOverview(type_){
+	let project = '';
 	$.ajaxSettings.async = false;
-    $.getJSON('js/json/' + list_ + '/' + class_ +'.json', function(data){
+    $.getJSON('js/' + type_ + '/' + type_ +'.json', function(data){
+		let title = '珍藏∕<a href="collection_overview.html?type='+ type_ + '">' + data.title + '</a>'
+		$("title").append(data.title);
+		$('article h1').empty();
+		$('article h1').append(title);
+		data.class_list.forEach(element => {
+			let class_en = element.class.en;
+			let class_zh = element.class.zh;
+			let item = data.items_list[element.index].items[0];
+			project += '<a href="collection_class.html?type='+ type_ +'&class='+ class_en +'">';
+			project += '<div class="col-m-6 col-4">'
+			project += '<div class="shbox">'
+			project += '<div class="imgbox">'
+			project += '<img src="images/'+ type_ +'/'+ class_en + '/' + item.id + '/' + item.id + '_01.jpg">';
+			project += '</div>'
+			project += '<div class="sh_tx">'
+			project += '<h3>'+ class_zh +'</h3>'
+			project += '<p></p>'
+			project += '</div>'
+			project += '<div class="shmorebt"><h4>More</h4></div>'
+			project += '</div>'
+			project += '</div>'
+			project += '</a>'
+		});
+	});
+	$('#project').empty();
+	$('#project').append(project);
+}
+
+function initializeClass(class_, type_){
+	$.ajaxSettings.async = false;
+    $.getJSON('js/' + type_ + '/' + type_ +'.json', function(data){
+		let items;
+		let classZh;
+		data.class_list.forEach(element => {
+			if (class_ == element.class.en) {
+				items = data.items_list[element.index].items;
+				classZh = element.class.zh;
+			}
+		});
 		let ch = '';
-		data.characters.forEach(character => {
-			let id_img = (character.id[0] == '0' && character.id[1] == '0')?('偶'+character.id):(character.id);
-			ch += '<a href="character.html?class=' + class_ + '&id=' + character.id + '">';
+		items.forEach(item => {
+			let id_img = (item.id[0] == '0' && item.id[1] == '0')?('偶'+item.id):(item.id);
+			ch += '<a href="collection_intro.html?type='+ type_ +'&class=' + class_ + '&id=' + item.id + '">';
 			ch += '<div class="col-m-6 col-3"><div class="shbox"><div class="imgbox">';
-			ch += '<img src="images/' + class_ + '/' + id_img + '_01.jpg"></div><div class="sh_tx">';
-			ch += '<h3>' + character.name + '</h3><p></p></div><div class="shmorebt"><h4>More</h4></div></div></div></a>';
+			ch += '<img src="images/' + type_ + '/' + class_ + '/' + id_img + '/' + id_img + '_01.jpg"></div><div class="sh_tx">';
+			ch += '<h3>' + item.name + '</h3><p></p></div><div class="shmorebt"><h4>More</h4></div></div></div></a>';
 		});
 		$('#list').empty();
 		$('#list').append(ch);
 
 		$('#header').empty();
-		let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
-		header += '<a href="class.html?class=' + data.class.en + '">'+ data.class.zh + '</a></h1>';
-		$("title").append(data.class.zh);
+		let header = '<h1>珍藏∕<a href="collection_overview.html?type='+ type_ +'">' + data.title +'</a>∕';
+		header += '<a href="collection_class.html?type='+ type_ +'&class=' + class_ + '">'+ classZh + '</a></h1>';
+		$("title").append(classZh);
 		$('#header').append(header);
 	});
 }
 
-function charactersIntro(par){
-	$.ajaxSettings.async = false;
-	class_list = ['shen', 'dan', 'jing', 'chou', 'tsa'];
+function initializeIntro(id_, class_, type_){
 	let morelist_cl = '';
-	let class_ = par.class;
-	let id_ = par.id;
-	class_list.forEach(element => {
-		if (class_ == element) {
-			$.getJSON('js/json/' + class_ +'.json', function(data){				
+	$.ajaxSettings.async = false;
+	$.getJSON('js/' + type_ + '/' + type_ + '.json', function(data){			
+		data.class_list.forEach(element => {
+			if (class_ == element.class.en) {
+				let classZh = element.class.zh;
 				$('#morede h2').empty();
-				$('#morede h2').append('更多' + data.class.zh + '角');
-		
-				let character_;
+				$('#morede h2').append('更多' + classZh + data.more);
+				$('#morech h2').empty();
+				$('#morech h2').append('更多' + data.title);
+				let items = data.items_list[element.index].items;
+				let item_;
 				let cnt = 0;
 				let morelist_ch = '';
-				data.characters.forEach(character => {
-					if (character.id == id_) {
-						character_ = character;
+				items.forEach(item => {
+					if (item.id == id_) {
+						item_ = item;
 					}
 					else if (cnt < 6){
-						let id_img = (character.id[0] == '0' && character.id[1] == '0')?('偶'+character.id):(character.id)
+						let id_img = (item.id[0] == '0' && item.id[1] == '0')?('偶'+item.id):(item.id)
 						morelist_ch += '<div class="col-2"><div class="shbox">';
-						morelist_ch += '<div class="imgbox"><img src="images/characters/'+ class_ + '/'+ id_img +'_01.jpg"></div>';
+						morelist_ch += '<div class="imgbox"><img src="images/'+type_+'/'+ class_ + '/'+ id_img +'/'+ id_img +'_01.jpg"></div>';
 						morelist_ch += '<div class="shmorebt"><h4>More</h4></div></div></div>';
 						cnt++;
 					}
 				});
 				$('#moredecon .imglist').empty();
 				$('#moredecon .imglist').append(morelist_ch);
-				let id_img = (character_.id[0] == '0' && character_.id[1] == '0')?('偶'+character_.id):(character_.id);
-				$("title").append(character_.name);
+
+				let id_img = (item_.id[0] == '0' && item_.id[1] == '0')?('偶'+item_.id):(item_.id);
+				$("title").append(item_.name);
 		
 				$('#header').empty();
-				let header = '<h1>珍藏∕<a href="list.html">戲偶(按角色分)</a>∕';
-				header += '<a href="class.html?class=' + data.class.en + '">'+ data.class.zh + '</a>∕';
-				header += '<a href="character.html?list=characters&class=' + class_ + 'id&=' + id_ + '">' + character_.name + '</a></h1>';
+				let header = '<h1>珍藏∕<a href="collection_overview.html?type='+ type_ +'">' + data.title + '</a>∕';
+				header += '<a href="collection_class.html?type='+ type_ +'&class=' + class_ + '">'+ classZh + '</a>∕';
+				header += '<a href="collection_intro.html?type='+ type_ +'&class=' + class_ + '&id=' + id_ + '">' + item_.name + '</a></h1>';
 				$('#header').append(header);
 		
 				$('#intro').empty();
-				let intro = '<h1>' + character_.name + '</h1>';
-				intro += '<p>' + character_.intro + '</p>';
+				let intro = '<h1>' + item_.name + '</h1>';
+				intro += '<p>' + item_.intro + '</p>';
 				$('#intro').append(intro);
 		
 				let bg_img = '';
 				let sm_img = '';
 				$('.swiper-wrapper').empty();
-				for (i = 1; i <= character_.image; i++) {
-					bg_img += '<div class="bcon swiper-slide"><img src="images/characters/' + data.class.en + '/' + id_img + '_0' + i + '.jpg"></div>';
-					sm_img += '<div class="bbox swiper-slide"><img src="images/characters/' + data.class.en + '/' + id_img + '_0' + i + '.jpg"></div>';
+				for (i = 1; i <= item_.image; i++) {
+					bg_img += '<div class="bcon swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + id_img + '/' + id_img + '_0' + i + '.jpg"></div>';
+					sm_img += '<div class="bbox swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + id_img + '/' + id_img + '_0' + i + '.jpg"></div>';
 				}
 				$('.swiper-wrapper').eq(0).append(bg_img);
 				$('.swiper-wrapper').eq(1).append(sm_img);
-			});
-		}
-		else {
-			$.getJSON('js/json/' + element +'.json', function(data){
-				let character = data.characters[0];
-				let id_img = (character.id[0] == '0' && character.id[1] == '0')?('偶'+character.id):(character.id);
+			}
+			else {
+				let item = data.items_list[element.index].items[0];
+				let id_img = (item.id[0] == '0' && item.id[1] == '0')?('偶'+item.id):(item.id);
 				morelist_cl += '<div class="col-2"><div class="shbox">';
-				morelist_cl += '<div class="imgbox"><img src="images/characters/'+ element + '/'+ id_img +'_01.jpg"></div>'
+				morelist_cl += '<div class="imgbox"><img src="images/'+type_+'/'+ element.class.en + '/'+ id_img + '/'+ id_img +'_01.jpg"></div>'
 				morelist_cl += '<div class="shmorebt"><h4>More</h4></div></div></div>';
-				$('#morechcon .imglist').empty();
-				$('#morechcon .imglist').append(morelist_cl);
-			});
-		}
+			}
+		});
+		$('#morechcon .imglist').empty();
+		$('#morechcon .imglist').append(morelist_cl);
 	});
 }
 
