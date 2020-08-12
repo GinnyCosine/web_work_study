@@ -278,7 +278,7 @@ function imgswp(){
 	var conw = imgw*0.8;
 	var img = new Image();
 	img.src = $(".bg_img img").attr("src");
-	img.onload = function(){
+	img.onload = () => {
 		var h = img.height;
 		var w = img.width; 
 		var conh = conw/w*h;
