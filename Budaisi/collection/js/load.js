@@ -203,8 +203,8 @@ function initializeIntro(id_, class_, type_){
 				let sm_img = '';
 				$('.swiper-wrapper').empty();
 				for (i = 1; i <= item_.image; i++) {
-					bg_img += '<div class="bcon swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + item.id + '/' + item.id + '_0' + i + '.jpg"></div>';
-					sm_img += '<div class="bbox swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + item.id + '/' + item.id + '_0' + i + '.jpg"></div>';
+					bg_img += '<div class="bcon swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + id_ + '/' + id_ + '_0' + i + '.jpg"></div>';
+					sm_img += '<div class="bbox swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + id_ + '/' + id_ + '_0' + i + '.jpg"></div>';
 				}
 				$('.swiper-wrapper').eq(0).append(bg_img);
 				$('.swiper-wrapper').eq(1).append(sm_img);
