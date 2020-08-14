@@ -141,10 +141,9 @@ function initializeClass(class_, type_){
 		});
 		let ch = '';
 		items.forEach(item => {
-			let id_img = (item.id[0] == '0' && item.id[1] == '0')?('偶'+item.id):(item.id);
 			ch += '<a href="collection_intro.html?type='+ type_ +'&class=' + class_ + '&id=' + item.id + '">';
 			ch += '<div class="col-m-6 col-3"><div class="shbox"><div class="imgbox">';
-			ch += '<img src="images/' + type_ + '/' + class_ + '/' + id_img + '/' + id_img + '_01.jpg"></div><div class="sh_tx">';
+			ch += '<img src="images/' + type_ + '/' + class_ + '/' + item.id + '/' + item.id + '_01.jpg"></div><div class="sh_tx">';
 			ch += '<h3>' + item.name + '</h3><p></p></div><div class="shmorebt"><h4>More</h4></div></div></div></a>';
 		});
 		$('#list').empty();
@@ -178,9 +177,8 @@ function initializeIntro(id_, class_, type_){
 						item_ = item;
 					}
 					else if (cnt < 6){
-						let id_img = (item.id[0] == '0' && item.id[1] == '0')?('偶'+item.id):(item.id)
 						morelist_ch += '<div class="col-2"><div class="shbox">';
-						morelist_ch += '<div class="imgbox"><img src="images/'+type_+'/'+ class_ + '/'+ id_img +'/'+ id_img +'_01.jpg"></div>';
+						morelist_ch += '<div class="imgbox"><img src="images/'+type_+'/'+ class_ + '/'+ item.id +'/'+ item.id +'_01.jpg"></div>';
 						morelist_ch += '<div class="shmorebt"><h4>More</h4></div></div></div>';
 						cnt++;
 					}
@@ -188,7 +186,6 @@ function initializeIntro(id_, class_, type_){
 				$('#moredecon .imglist').empty();
 				$('#moredecon .imglist').append(morelist_ch);
 
-				let id_img = (item_.id[0] == '0' && item_.id[1] == '0')?('偶'+item_.id):(item_.id);
 				$("title").append(item_.name);
 		
 				$('#header').empty();
@@ -206,17 +203,16 @@ function initializeIntro(id_, class_, type_){
 				let sm_img = '';
 				$('.swiper-wrapper').empty();
 				for (i = 1; i <= item_.image; i++) {
-					bg_img += '<div class="bcon swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + id_img + '/' + id_img + '_0' + i + '.jpg"></div>';
-					sm_img += '<div class="bbox swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + id_img + '/' + id_img + '_0' + i + '.jpg"></div>';
+					bg_img += '<div class="bcon swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + item.id + '/' + item.id + '_0' + i + '.jpg"></div>';
+					sm_img += '<div class="bbox swiper-slide"><img src="images/' + type_ + '/' + class_ + '/' + item.id + '/' + item.id + '_0' + i + '.jpg"></div>';
 				}
 				$('.swiper-wrapper').eq(0).append(bg_img);
 				$('.swiper-wrapper').eq(1).append(sm_img);
 			}
 			else {
 				let item = data.items_list[element.index].items[0];
-				let id_img = (item.id[0] == '0' && item.id[1] == '0')?('偶'+item.id):(item.id);
 				morelist_cl += '<div class="col-2"><div class="shbox">';
-				morelist_cl += '<div class="imgbox"><img src="images/'+type_+'/'+ element.class.en + '/'+ id_img + '/'+ id_img +'_01.jpg"></div>'
+				morelist_cl += '<div class="imgbox"><img src="images/'+type_+'/'+ element.class.en + '/'+ item.id + '/'+ item.id +'_01.jpg"></div>'
 				morelist_cl += '<div class="shmorebt"><h4>More</h4></div></div></div>';
 			}
 		});
