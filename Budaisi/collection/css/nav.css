@@ -223,6 +223,10 @@
 	box-sizing: unset;
 }
 
+#mobile_menu .cross:hover{
+	cursor: pointer;
+}
+
 #mobile_menu .cross .line{
 	position: absolute;
 	width: 100%;
