@@ -29,6 +29,7 @@ for class_ in classes.keys():
     idx += 1
     tmp.append(each)
 data = {
+    'has_class': 1,
     'title': '戲偶',
     'more' : '角',
     'class_list':list_cl,

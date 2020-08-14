@@ -104,25 +104,45 @@ function initializeOverview(type_){
 		$("title").append(data.title);
 		$('article h1').empty();
 		$('article h1').append(title);
-		data.class_list.forEach(element => {
-			let class_en = element.class.en;
-			let class_zh = element.class.zh;
-			let item = data.items_list[element.index].items[0];
-			project += '<a href="collection_class.html?type='+ type_ +'&class='+ class_en +'">';
-			project += '<div class="col-m-6 col-4">'
-			project += '<div class="shbox">'
-			project += '<div class="imgbox">'
-			project += '<img src="images/'+ type_ +'/'+ class_en + '/' + item.id + '/' + item.id + '_01.jpg">';
-			project += '</div>'
-			project += '<div class="sh_tx">'
-			project += '<h3>'+ class_zh +'</h3>'
-			project += '<p></p>'
-			project += '</div>'
-			project += '<div class="shmorebt"><h4>More</h4></div>'
-			project += '</div>'
-			project += '</div>'
-			project += '</a>'
-		});
+		if (data.has_class == 1) {
+			data.class_list.forEach(element => {
+				let class_en = element.class.en;
+				let class_zh = element.class.zh;
+				let item = data.items_list[element.index].items[0];
+				project += '<a href="collection_class.html?type='+ type_ +'&class='+ class_en +'">';
+				project += '<div class="col-m-6 col-4">'
+				project += '<div class="shbox">'
+				project += '<div class="imgbox">'
+				project += '<img src="images/'+ type_ +'/'+ class_en + '/' + item.id + '/' + item.id + '_01.jpg">';
+				project += '</div>'
+				project += '<div class="sh_tx">'
+				project += '<h3>'+ class_zh +'</h3>'
+				project += '<p></p>'
+				project += '</div>'
+				project += '<div class="shmorebt"><h4>More</h4></div>'
+				project += '</div>'
+				project += '</div>'
+				project += '</a>'			
+			});
+		}
+		else {
+			data.items.forEach(item => {
+				project += '<a href="collection_intro.html?type='+ type_ +'&id='+ item.id +'">';
+				project += '<div class="col-m-6 col-4">'
+				project += '<div class="shbox">'
+				project += '<div class="imgbox">'
+				project += '<img src="images/' + type_ + '/' + item.id + '/' + item.id + '_01.jpg">';
+				project += '</div>'
+				project += '<div class="sh_tx">'
+				project += '<h3>'+ item.name +'</h3>'
+				project += '<p></p>'
+				project += '</div>'
+				project += '<div class="shmorebt"><h4>More</h4></div>'
+				project += '</div>'
+				project += '</div>'
+				project += '</a>'
+			});
+		}
 	});
 	$('#project').empty();
 	$('#project').append(project);
@@ -158,6 +178,61 @@ function initializeClass(class_, type_){
 }
 
 function initializeIntro(id_, class_, type_){
+	if (class_ == null)
+		introNoClass(id_, type_);
+	else
+		introWithClass(id_, class_, type_);
+}
+
+function introNoClass(id_, type_){
+	$.ajaxSettings.async = false;
+	$.getJSON('js/' + type_ + '/' + type_ + '.json', function(data){
+		$('#morede').hide();
+		$('#morech h2').empty();
+		$('#morech h2').append('更多' + data.title);
+	
+		let item_;
+		let cnt = 0;
+		let morelist_ch = '';
+		data.items.forEach(item => {
+			if (item.id == id_) {
+				item_ = item;
+			}
+			else if (cnt < 6){
+				morelist_ch += '<div class="col-2"><div class="shbox">';
+				morelist_ch += '<div class="imgbox"><img src="images/'+type_+'/'+ item.id +'/'+ item.id +'_01.jpg"></div>';
+				morelist_ch += '<div class="shmorebt"><h4>More</h4></div></div></div>';
+				cnt++;
+			}
+		});
+		$('#moredecon .imglist').empty();
+		$('#moredecon .imglist').append(morelist_ch);
+
+		$("title").append(item_.name);
+	
+		$('#header').empty();
+		let header = '<h1>珍藏∕<a href="collection_overview.html?type='+ type_ +'">' + data.title + '</a>∕';
+		header += '<a href="collection_intro.html?type='+ type_ + '&id=' + id_ + '">' + item_.name + '</a></h1>';
+		$('#header').append(header);
+
+		$('#intro').empty();
+		let intro = '<h1>' + item_.name + '</h1>';
+		intro += '<p>' + item_.intro + '</p>';
+		$('#intro').append(intro);
+
+		let bg_img = '';
+		let sm_img = '';
+		$('.swiper-wrapper').empty();
+		for (i = 1; i <= item_.image; i++) {
+			bg_img += '<div class="bcon swiper-slide"><img src="images/' + type_ + '/' + id_ + '/' + id_ + '_0' + i + '.jpg"></div>';
+			sm_img += '<div class="bbox swiper-slide"><img src="images/' + type_ + '/' + id_ + '/' + id_ + '_0' + i + '.jpg"></div>';
+		}
+		$('.swiper-wrapper').eq(0).append(bg_img);
+		$('.swiper-wrapper').eq(1).append(sm_img);
+	});
+}
+
+function introWithClass(id_, class_, type_){
 	let morelist_cl = '';
 	$.ajaxSettings.async = false;
 	$.getJSON('js/' + type_ + '/' + type_ + '.json', function(data){			

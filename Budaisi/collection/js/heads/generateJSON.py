@@ -5,7 +5,7 @@ idx = 0
 items_list = []
 class_list = []
 class_idx = {}
-with open('costumes.csv', newline='') as csvfile:
+with open('heads.csv', newline='') as csvfile:
     content = csv.reader(csvfile, delimiter=',')
     for row in content:
         if class_idx.get(row[1].strip()) == None:
@@ -30,10 +30,10 @@ with open('costumes.csv', newline='') as csvfile:
             })
 data = {
     'has_class': 1,
-    'title': '服裝',
-    'more' : '服',
+    'title': '偶頭',
+    'more' : '偶頭',
     'class_list': class_list,
     'items_list': items_list
 }
-with open("costumes.json","w") as jsonfile:
+with open("heads.json","w") as jsonfile:
     json.dump(data,jsonfile, ensure_ascii=False)
