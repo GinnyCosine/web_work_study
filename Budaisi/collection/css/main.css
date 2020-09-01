@@ -35,6 +35,10 @@ a {
     background: rgba(0,0,0,1);
 }
 
+#confirm{
+	display: none;
+}
+
 /*header*/
 header{
 	position:relative;

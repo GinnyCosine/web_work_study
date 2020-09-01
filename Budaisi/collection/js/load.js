@@ -161,9 +161,18 @@ function initializeClass(class_, type_){
 		});
 		let ch = '';
 		items.forEach(item => {
+			var filespec = 'images/' + type_ + '/' + class_ + '/' + item.id + '/' + item.id + '_01.jpg';
+			let status;
+			$("#confirm").load(filespec, function(responseTxt, statusTxt, xhr){
+				status = statusTxt;
+			});
+
+			if (status == "error") {
+				return;
+			}
 			ch += '<a href="collection_intro.html?type='+ type_ +'&class=' + class_ + '&id=' + item.id + '">';
 			ch += '<div class="col-m-6 col-3"><div class="shbox"><div class="imgbox">';
-			ch += '<img src="images/' + type_ + '/' + class_ + '/' + item.id + '/' + item.id + '_01.jpg"></div><div class="sh_tx">';
+			ch += '<img src="'+ filespec +'"></div><div class="sh_tx">';
 			ch += '<h3>' + item.name + '</h3><p></p></div><div class="shmorebt"><h4>More</h4></div></div></div></a>';
 		});
 		$('#list').empty();
