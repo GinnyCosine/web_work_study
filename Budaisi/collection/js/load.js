@@ -66,7 +66,10 @@ $(document).ready(function(){
 		$(".morechbox i:eq(1)").toggle(100);
 	});	
 	
+	let vw = $(window).width()
+
 	$(window).resize(function(){
+		let vw_change = $(window).width()
 	
 		bannerresize();
 		mvresize();
@@ -74,9 +77,45 @@ $(document).ready(function(){
 		
 		imgswp();
 		closeMobileMenu();
+
+		if (vw_change != vw) {
+			viewer_height();
+			vw = vw_change;
+		}
 	});
-	
+
+	viewer_height();
+	setPageNum();
+
+	$('#bb-custom-grid span').click(function(){
+		setPageNum();
+	});
+
+	$('.prev-next a').click(function(){
+		setPageNum();
+	});
+
 });
+
+function viewer_height(){
+	var ch = $('.bb-current').index() + 1;
+	var h = $('div.bb-item:nth-child('+ ch +') img').height();
+	while (h == 0) {
+		h = $('div.bb-item:nth-child('+ ch +') img').height();
+	}
+	$('.bb-bookblock').css('height', h + 'px');
+	$('div.bb-custom-grid article').css('height', (h+32) + 'px');
+	$('div.prev-next').css('height', (h+32) + 'px');
+	$('div.prev-next i').css('transform', 'translate(0, '+((h+32)/2)+'px)')
+	$('div.prev-next i').css('-ms-transform', 'translate(0, '+((h+32)/2)+'px)')
+	$('div.prev-next i').css('-webkit-transform', 'translate(0, '+((h+32)/2)+'px)')
+}
+
+function setPageNum(){
+	var page = $('.bb-current').index() + 1;
+	$('#pagenum').empty();
+    $('#pagenum').append('第 '+ (page) +' 版');
+}
 
 function initialize(){
 	let url = new URL(location.href);

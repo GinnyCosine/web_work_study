@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Budaisi</title>
+<!--css-->
+<link href="css/swiper.css" rel="stylesheet" type="text/css">
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<!--font-->
+<link href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans&family=Noto+Sans+TC:wght@100;300&display=swap" rel="stylesheet">
+<!--js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://kit.fontawesome.com/a08ea32dcc.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/load.js"></script>
+
+<script src="js/modernizr.custom.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+<script src="js/jquerypp.custom.js"></script>
+<script src="js/jquery.bookblock.js"></script>
+<link rel="stylesheet" type="text/css" href="css/demo5.css" />
+
+</head>
+<body>
+<!--menu-->
+<header>
+    <section>
+        <div class="row">
+            <div id="menubtn">
+                <div class="menubtn_line"></div>
+                <div class="menubtn_line"></div>
+                <div class="menubtn_line"></div>
+                <div class="bg"></div>
+            </div>
+            <div class="col-m-3 col-2"><a href="index.html"><img src="images/logo.png"></a></div>
+            <div class="col-m-6 col-8"></div>
+            <div class="col-m-3 col-2" id="lan"></div>
+        </div>
+        <div class="row">
+            <div class="col-12" id="pc_menu"><nav></nav></div>
+        </div>
+    </section>
+</header>
+
+<!-- mobile menu -->
+<div id="cover"></div>
+<div class="col-12" id="mobile_menu">
+    <section>
+        <div class="cross">
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>  
+    </section>
+    <div id="mb_lan"></div>
+    <section>
+        <nav></nav>
+    </section>
+</div>
+
+<!-- <div class="bb-custom-grid" id="bb-custom-grid">
+<h3>Neonmob set</h3>
+<div class="bb-bookblock">
+    <div class="bb-item"><a href="http://dribbble.com/shots/614568-Lands-Devil-Spirit-Jinx"><img src="images/003-0001.jpg" alt="image01"/></a></div>
+    <div class="bb-item"><a href="http://dribbble.com/shots/614264-Lands-Antspearer"><img src="images/003-0002.jpg" alt="image02"/></a></div>
+    <div class="bb-item"><a href="http://dribbble.com/shots/614153-Lands-Bonemonster"><img src="images/003-0003.jpg" alt="image03"/></a></div>
+</div>
+<nav>
+    <span class="bb-current"></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</nav>
+</div> -->
+
+<div class="main clearfix">
+    <div class="bb-custom-grid" id="bb-custom-grid">
+        <article>
+            <h3>Neonmob set</h3>
+            <div class="bb-bookblock">
+                <div class="bb-item"><a href="http://dribbble.com/shots/614568-Lands-Devil-Spirit-Jinx"><img src="./images/003-0001.jpg" alt="image01"/></a></div>
+                <div class="bb-item"><a href="http://dribbble.com/shots/614264-Lands-Antspearer"><img src="./images/003-0002.jpg" alt="image02"/></a></div>
+                <div class="bb-item"><a href="http://dribbble.com/shots/614153-Lands-Bonemonster"><img src="./images/003-0003.jpg" alt="image03"/></a></div>
+            </div>
+            <nav>
+                <span class="bb-current"></span>
+                <span></span>
+                <span></span>
+            </nav>
+        </article>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var Page = (function() {
+
+        var $grid = $( '#bb-custom-grid' );
+
+        return {
+            init : function() {
+                $grid.find( 'div.bb-bookblock' ).each( function( i ) {
+                    
+                    var $bookBlock = $( this ),
+                        $nav = $bookBlock.next().children( 'span' ),
+                        bb = $bookBlock.bookblock( {
+                            speed : 600,
+                            shadows : false
+                        } );
+                        
+                    // add navigation events
+                    $nav.each( function( i ) {
+                        $( this ).on( 'click touchstart', function( event ) {
+                            var $dot = $( this );
+                            $nav.removeClass( 'bb-current' );
+                            $dot.addClass( 'bb-current' );
+                            $bookBlock.bookblock( 'jump', i + 1 );
+                            return false;
+                        } );
+                    } );
+                    
+                    // add swipe events
+                    $bookBlock.children().on( {
+                        'swipeleft' : function( event ) {
+                            $bookBlock.bookblock( 'next' );
+                            return false;
+                        },
+                        'swiperight' : function( event ) {
+                            $bookBlock.bookblock( 'prev' );
+                            return false;
+                        }
+
+                    } );
+                    
+                } );
+            }
+        };
+
+    })();
+</script>
+<script>
+        Page.init();
+</script>
+
+<!--footer-->
+<footer></footer>
+
+</body>
+</html>
