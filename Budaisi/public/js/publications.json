@@ -1,0 +1,423 @@
+{
+    "publications":[
+        {
+            "id":1,
+            "title":"西田社會館成立˙新址設於台大附近",
+            "date":"1987.10.15",
+            "issuer":"陳金次",
+            "page_num": 1
+        },
+        {
+            "id":2,
+            "title":"西田社兩週歲˙在台大辦社慶˙恭請王炎至會館跳鍾馗",
+            "date":"1987.12.05",
+            "issuer":"陳金次",
+            "editors":[
+                {"name": "吳素豐"}
+            ],
+            "page_num": 6
+        },
+        {
+            "id":3,
+            "title":"開春好氣象˙活動頻出展新機",
+            "date":"1988.01.31",
+            "issuer":"陳金次",
+            "editors":[
+                {"name": "莊佩玲"},
+                {"name": "蔡惠芳"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":4,
+            "title":"西田社再現校園熱潮˙明虛實重演壓箱好戲",
+            "date":"1988.04.10",
+            "issuer":"陳金次",
+            "editors":[
+                {"name": "沈淑莉"},
+                {"name": "張瑞娥"},
+                {"name": "陳明照"},
+                {"name": "林皎宏"}
+            ],
+            "page_num": 6
+        },
+        {
+            "id":5,
+            "title":"給他們一塊成長的空間˙從認識我們的傳統開始",
+            "date":"1988.11.10",
+            "issuer":"陳金次",
+            "editors":[
+                {"name": "沈淑莉"},
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":6,
+            "title":"德不孤˙必有鄰",
+            "date":"1989.11",
+            "issuer":"陳金次",
+            "editors":[
+                {"name": "林志聰"},
+                {"name": "王昭美"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":7,
+            "title":"卓爾維文化耕耘˙忽四年狂流憑力˙障海上一西田",
+            "date":"1989.12",
+            "issuer":"陳金次",
+            "editors":[
+                {"name": "林志聰"},
+                {"name": "王昭美"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":8,
+            "title":"西田社四週年有感",
+            "date":"1990.01",
+            "issuer":"陳金次",
+            "editors":[
+                {"name": "林志聰"},
+                {"name": "王昭美"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":9,
+            "title":"台灣傳統布袋戲淺論",
+            "date":"1990.04",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林志聰"},
+                {"name": "王昭美"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":10,
+            "title":"西田社董事會",
+            "date":"1990.07",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "李來富"},
+                {"name": "王昭美"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":11,
+            "title":"仲秋夜的饗宴˙大家來看戲",
+            "date":"1990.10.10",
+            "issuer":"楊維哲",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "李來富"},
+                {"name": "王昭美"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":12,
+            "title":"五週年鬧熱滾滾˙扶老攜幼回娘家",
+            "date":"1990.12.10",
+            "issuer":"楊維哲",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "鄭如芳"},
+                {"name": "陳秀芬"},
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":13,
+            "title":"春暖花開看戲天˙聊齋故事新登場",
+            "date":"1991.04.10",
+            "issuer":"楊維哲",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "鄭如芳"},
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":14,
+            "title":"布袋戲要出頭天˙大家作夥來打拼",
+            "date":"1991.07.10",
+            "issuer":"楊維哲",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "鄭如芳"},
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":15,
+            "title":"亦宛然60週年慶˙西田社做鎮湊鬧熱",
+            "date":"1991.10.25",
+            "issuer":"楊維哲",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "鄭如芳"},
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":16,
+            "title":"人有心˙戲有情˙台灣文化向前行",
+            "date":"1992.04.25",
+            "issuer":"楊維哲",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "王昭美"},
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":17,
+            "title":"攜手同心走遠路˙西田社七年有成",
+            "date":"1992.09.05",
+            "issuer":"楊維哲",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "莊研誼"},
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":18,
+            "title":"西田社慶祝七週年˙大家相招來看戲",
+            "date":"1993.04.01",
+            "issuer":"李鴻禧",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "莊研誼"},
+                {"name": "李金生"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":19,
+            "title":"夏季公演心齣頭˙《什細記》裡見分曉",
+            "date":"1993.07.01",
+            "issuer":"李鴻禧",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "莊研誼"},
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":20,
+            "title":"花雅頌，鑼鼓揚，台大子弟潤舊腔",
+            "date":"1993.12.10",
+            "issuer":"李鴻禧",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":21,
+            "title":"看咱的子弟做戲",
+            "date":"1994.03.16",
+            "issuer":"李鴻禧",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林皎宏"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":22,
+            "title":"西田社布袋戲薪傳展",
+            "date":"1995.01.01",
+            "issuer":"李鴻禧",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林美仙"},
+                {"name": "蔡振家"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":23,
+            "title":"西田社十週年",
+            "date":"1995.10.26",
+            "issuer":"李鴻禧",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林美仙"},
+                {"name": "蔡振家"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":24,
+            "title":"蔡武雍先生專訪˙布袋戲藝人專欄",
+            "date":"1996.08.01",
+            "issuer":"陳金次",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林美仙"},
+                {"name": "蔡振家"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":25,
+            "title":"西田社戲曲工作室「亂彈戲傳習計畫」成果展演",
+            "date":"1996.09.01",
+            "issuer":"陳金次",
+            "editor_in_chief":"曾文龍",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林美仙"},
+                {"name": "蔡振家"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":26,
+            "title":"賜美樓主演_江賜美女士專訪",
+            "date":"1996.10.01",
+            "issuer":"陳金次",
+            "editor_in_chief":"曾文龍",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林美仙"},
+                {"name": "蔡振家"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":27,
+            "title":"西田社戲曲工作室「本土皮黃」演出札感",
+            "date":"1996.11.01",
+            "issuer":"陳金次",
+            "editor_in_chief":"曾文龍",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林美仙"},
+                {"name": "蔡振家"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":28,
+            "title":"演而優則刻_記述王文生演師",
+            "date":"1996.12.01",
+            "issuer":"陳金次",
+            "editor_in_chief":"曾文龍",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林美仙"},
+                {"name": "蔡振家"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":29,
+            "title":"西田社搬新厝獻佳禮",
+            "date":"1997.03.01",
+            "issuer":"陳金次",
+            "editor_in_chief":"曾文龍",
+            "director_genegal":"李來富",
+            "editors":[
+                {"name": "林美仙"},
+                {"name": "蔡振家"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":30,
+            "title":"走尋布袋戲老藝師江賜美",
+            "date":"1998.03.15",
+            "issuer":"陳金次",
+            "director_genegal":"謝德錫",
+            "editors":[
+                {"name": "林美仙"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":31,
+            "title":"留下一份父親永遠的紀念",
+            "date":"1998.06.01",
+            "issuer":"陳金次",
+            "director_genegal":"謝德錫",
+            "editors":[
+                {"name": "林美仙"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":32,
+            "title":"西田社13週年慶系列活動",
+            "date":"1998.10.01",
+            "issuer":"陳金次",
+            "director_genegal":"謝德錫",
+            "editors":[
+                {"name": "林美仙"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":33,
+            "title":"紀錄片「斷曲」首映會",
+            "date":"1998.12.01",
+            "issuer":"陳金次",
+            "director_genegal":"謝德錫",
+            "editors":[
+                {"name": "林美仙"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":34,
+            "title":"戲繪童年1999布袋戲築夢嘉年華",
+            "date":"1999.04.10",
+            "issuer":"陳金次",
+            "director_genegal":"謝德錫",
+            "editors":[
+                {"name": "林美仙"}
+            ],
+            "page_num": 4
+        },
+        {
+            "id":35,
+            "title":"1999布袋戲「袖珍」文物展",
+            "date":"1999.07.01",
+            "issuer":"陳金次",
+            "director_genegal":"謝德錫",
+            "page_num": 4
+        },
+        {
+            "id":36,
+            "title":"憶故人 懷師恩",
+            "date":"1999.10.01",
+            "issuer":"陳金次",
+            "director_genegal":"謝德錫",
+            "page_num": 4
+        },
+        {
+            "id":37,
+            "title":"優秀劇本大徵選",
+            "date":"1999.12.31",
+            "issuer":"陳金次",
+            "director_genegal":"謝德錫",
+            "page_num": 4
+        }
+    ]
+}
+

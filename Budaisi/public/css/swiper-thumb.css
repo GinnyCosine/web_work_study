@@ -1,0 +1,51 @@
+.swiper-container {
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
+
+.gallery-thumbs {
+    width: 85%;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.gallery-thumbs .swiper-wrapper {
+    display: inline-block;
+}
+
+.gallery-thumbs .swiper-slide {
+    width:auto !important;
+    height:auto !important;
+    display: inline-block;
+    opacity: 1;
+}
+
+.gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 0.5;
+}
+
+@media only screen and (min-width: 768px) {
+    
+    .gallery-top {
+        width: 85%;
+        box-sizing: border-box;
+    }
+
+    .gallery-thumbs {
+        height: 100%;
+        width: 15%;
+        box-sizing: border-box;
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    
+}
