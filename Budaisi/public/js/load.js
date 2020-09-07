@@ -1,9 +1,14 @@
 // JavaScript Document
+let total_page;
+let cur_id;
+let current = 1;
+let zh_nb = ['一','二','三','四','五','六'];
+let viewer_checker;
 
 $(document).ready(function(){
 	
 	/* initialize */
-	initialize();
+    initialize();
 	swiper();
 	$("#pc_menu nav").load("nav.html");
 	$("#lan").load("lan.html");
@@ -14,8 +19,7 @@ $(document).ready(function(){
 	bannerresize();
 	mvresize();
 	imgswp();
-	
-	
+
 	/* mobile menu */
 	$("#menubtn").click(function(){
 		$("#mobile_menu").animate({width:'show',opacity:'show'},400);
@@ -84,22 +88,22 @@ $(document).ready(function(){
 		}
 	});
 
-	viewer_height();
+	viewer_checker = setInterval(function(){ 
+		if ($('div.bb-item:nth-child(1) img').height() > 0) {
+			viewer_height();
+	}}, 1);
 
 });
 
 function viewer_height(){
+	clearInterval(viewer_checker);
 	var ch = $('.bb-current').index() + 1;
 	var h = $('div.bb-item:nth-child('+ ch +') img').height();
-	while (h == 0) {
-		h = $('div.bb-item:nth-child('+ ch +') img').height();
-	}
 	$('.bb-bookblock').css('height', h + 'px');
 	$('div.bb-custom-grid article').css('height', (h+32) + 'px');
-	$('div.prev-next').css('height', (h+32) + 'px');
-	$('div.prev-next i').css('transform', 'translate(0, '+((h+32)/2)+'px)')
-	$('div.prev-next i').css('-ms-transform', 'translate(0, '+((h+32)/2)+'px)')
-	$('div.prev-next i').css('-webkit-transform', 'translate(0, '+((h+32)/2)+'px)')
+	$('.prev-next i').css('transform', 'translate(0, '+((h+32)/2)+'px)')
+	$('.prev-next i').css('-ms-transform', 'translate(0, '+((h+32)/2)+'px)')
+	$('.prev-next i').css('-webkit-transform', 'translate(0, '+((h+32)/2)+'px)')
 }
 
 
@@ -178,9 +182,9 @@ function initializeOverview(type_){
 				project += '</a>'
 			});
 		}
+		$('#project').empty();
+		$('#project').append(project);
 	});
-	$('#project').empty();
-	$('#project').append(project);
 }
 
 function initializeClass(class_, type_){
@@ -423,10 +427,9 @@ function closeMobileMenu(){
 }
 
 function initializePublicationIntro(id_) {
-	alert(12)
 	$.ajaxSettings.async = false;
     $.getJSON('js/publications.json', function(data){
-		let publication = data.publications[id_-1]
+		let publication = data.publications[id_-1];
 		let id = publication.id;
 		let title = publication.title;
 		let date = publication.date;
@@ -434,11 +437,13 @@ function initializePublicationIntro(id_) {
 		let editor_in_chief = publication.editor_in_chief;
 		let director_genegal = publication.director_genegal;
 		let editors = publication.editors;
+		cur_id = id;
+		total_page = publication.page_num;
 		$("#header h1").append('∕<a href="publication_intro.html?id='+ id +'">第 '+ id +' 期</a>')
 		$("#intro h1").empty();
 		$("#intro h1").append('第 '+ id +' 期');
 		$("#intro h3").empty();
-		$("#intro h1").append(title);
+		$("#intro h3").append(title);
 		$("#intro tbody").empty();
 		$("#intro tbody").append('<tr><td>日期</td><td>'+ date +'</td></tr>');
 		if (issuer)
@@ -460,9 +465,29 @@ function initializePublicationIntro(id_) {
 			eds += '</tr>';
 			$("#intro tbody").append(eds);
 		}
-	})
+		$('#pagenum').empty();
+        $('#pagenum').append('第 '+ id +' 期之一');
+
+		$('div.bb-bookblock').empty();
+		$('#bb-custom-grid nav').empty();
+		for (i = 1; i <= total_page; i++) {
+			$('div.bb-bookblock').append('<div class="bb-item"><img src="./images/publication/'+ id +'-'+ i +'.jpg" alt="'+ i +'"/></div>')
+			if (i == 1) {
+				$('#bb-custom-grid nav').append('<span class="bb-current"></span>');
+			}
+			else {
+				$('#bb-custom-grid nav').append('<span></span>');
+			}
+		}
+		Page.init();
+	});
 }
 
 function initializePublicationOverview() {
 
+}
+
+function setPageNum(cur){
+	$('#pagenum').empty();
+	$('#pagenum').append('第 '+ cur_id +' 期之'+ zh_nb[cur-1]);
 }

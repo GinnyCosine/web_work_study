@@ -68,6 +68,7 @@
 
 div.bb-custom-grid article img{
 	width: 100%;
+	height: auto;
 }
 
 .bb-bookblock {
@@ -140,12 +141,6 @@ div.bb-custom-grid nav span.bb-current {
 	background: #b1b1b1;
 }
 
-div.prev-next{
-	margin: 0;
-	display: inline-block;
-	float: left;
-}
-
 .bb-prev{
 	padding: 0 5px 0 0;
 }
@@ -154,7 +149,11 @@ div.prev-next{
 	padding: 0 0 0 5px;
 }
 
-div.prev-next i{
+.prev-next{
+	margin: 0;
+	display: inline-block;
+	position: relative;
+	float: left;
 	font-size: 40px;
 	color: #b1b1b1;
 	-ms-transform: translate(0, 50%); /* IE 9 */
