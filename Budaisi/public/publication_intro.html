@@ -67,7 +67,6 @@
     <a href="#">布袋戲藝術史</a>∕
     <a href="#">西田社與發起人</a>∕
     <a href="publication_overview.html">西田社會訊</a>
-    <!--  -->
 </h1></article>
 
 <!--project-->
@@ -104,7 +103,7 @@
 <div class="row" id="morech">
 		<div class="col-1">&nbsp;</div>
         <div class="col-10 debox">
-        	<h2></h2>
+        	<h2>更多會刊</h2>
             <div class="morechbox">
                 <i class="fas fa-chevron-up"></i>
                 <i class="fas fa-chevron-down"></i>
@@ -150,6 +149,7 @@
                             $bookBlock.bookblock( 'jump', i + 1 );
                             current = i + 1;
                             setPageNum(current);
+                            viewer_height();
                             return false;
                         } );
                     } );
@@ -211,6 +211,12 @@
         };
 
     })();
+</script>
+<script>
+$(document).ready(function(){
+    $("a").attr("data-ajax","false");
+    $(".shmorebt").css("width","fit-content");
+})
 </script>
 </body>
 </html>

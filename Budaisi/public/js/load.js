@@ -480,11 +480,56 @@ function initializePublicationIntro(id_) {
 			}
 		}
 		Page.init();
+
+		let first = id - 2;
+		let last = id + 2;
+		let total_pb = data.publications.length;
+		let morelist_ch = '';
+		while (first < 1) {
+			first++;
+			last++;
+		}
+		while (last > total_pb) {
+			first--;
+			last--;
+		}
+		for (i = first; i <= last; i++) {
+			morelist_ch += '<div class="col-2"><div class="shbox"><a href="publication_intro.html?id='+ i +'">';
+			morelist_ch += '<div class="imgbox"><img src="images/publication/'+ i +'-1.jpg"></div>';
+			morelist_ch += '<div class="shmorebt"><h4>第'+ i +'期</h4></div></a></div></div>';
+		}
+		
+		$('#morechcon .imglist').empty();
+		$('#morechcon .imglist').append(morelist_ch);
 	});
 }
 
 function initializePublicationOverview() {
+	let project = '';
+	$.ajaxSettings.async = false;
+    $.getJSON('js/publications.json', function(data){
+		let total_pb = data.publications.length;
+		for (i = 1; i < total_pb; i++) {
+			project += '<a href="publication_intro.html?id='+ i +'">';
+			project += '<div class="col-m-6 col-4">'
+			project += '<div class="shbox">'
+			project += '<div class="imgbox">'
+			project += '<img src="images/publication/' + i + '-1.jpg">';
+			project += '</div>'
+			project += '<div class="sh_tx">'
+			project += '<h3>第 '+ i +' 期</h3>'
+			project += '<p></p>'
+			project += '</div>'
+			project += '<div class="shmorebt"><h4>More</h4></div>'
+			project += '</div>'
+			project += '</div>'
+			project += '</a>'
+		}
+		
+	});
 
+	$('#project').empty();
+	$('#project').append(project);
 }
 
 function setPageNum(cur){
